@@ -1,7 +1,7 @@
 #Vowel Count
 def get_count(input_str)
   #your code here
-  input_str.count("aeiou")
+  return input_str.count("aeiou")
 end
 
 
@@ -10,7 +10,7 @@ def remove_smallest(numbers)
     numbers = numbers.dup
     return [] if numbers.empty?
     numbers.delete_at(numbers.index(numbers.min))
-    numbers
+    return numbers
 end
 
 #Get the Middle Character
@@ -34,14 +34,14 @@ end
 
 #Disemvowel Trolls
 def disemvowel(str)
-    str.delete"aeiouAEIOU"
+    return str.delete"aeiouAEIOU"
 end
 
 
 #Digit*Digit
 def square_digits(num)
     # code goes here
-    num.to_s.split(//).map{|x| x.to_i**2}.join().to_i
+    return num.to_s.split(//).map{|x| x.to_i**2}.join().to_i
   end
 
 
@@ -66,7 +66,38 @@ end
 
 
 #Credit Card Mask
+def maskify(cc)
+  # your beautiful code goes here
+  return cc.gsub(/.(?=.{4})/, "#")
+end
+
 
 #Categorize New Member
+def open_or_senior(data)
+  return  data.map { |age, handicap| age >= 55 && handicap > 7 ? "Senior" : "Open" }
+end
+
 
 #Find The Parity Outlier
+def find_outlier(integers)
+  even = []
+  odd = []
+  integers.each do |x| 
+    if x.even? 
+      even << x
+    else 
+      odd << x 
+    end
+  end
+  if even.length == 1
+    return even[0]
+  else
+    return odd[0]
+  end
+end
+
+
+#Find The Parity Outlier @2
+def find_outlier(integers)
+  return integers.partition(&:odd?).min_by(&:size).first
+end
